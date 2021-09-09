@@ -1,0 +1,23 @@
+extends layout.pug
+
+block style
+    style
+        include ../static/css/contact.css
+        include ../static/css/style.css
+        include ../static/css/navbar.css
+        include ../static/css/footer.css
+
+block content
+    form(action = "/contact" method = "POST" id = "form")
+        h1 Contact us
+        .container
+            label Name
+            input(type="text" name="name" placeholder="Enter your name")
+        .container
+            label Email
+            input(type="email" name="email" placeholder="Enter your email")
+        .container
+            textarea#textarvea(name="comment" cols='30', rows='10', placeholder='Write something about yourself')
+        button(type='submit') Submit
+block scripts
+    script(src="../static/js/navbar.js")

@@ -1,0 +1,58 @@
+*{
+    border:none;
+}
+body{
+    background: linear-gradient(0deg, rgb(7 36 255 / 51%), rgb(0 0 0 / 87%)), url(/static/background/bg3.jpg) no-repeat center center/cover;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 100%;
+    margin: auto;
+    height: 705px;
+}
+#form input{
+    width: 346px;
+    padding: 17px;
+    outline: none;
+    height: 9px;
+    margin: 7px;
+    border-radius: 6px;
+    font-size: 18px;
+}
+#btn{
+    background-color: #408c40;
+    width: 107px;
+    height: 31px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border-radius: 22px;
+    cursor: pointer;
+}
+#form a{
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    margin: 9px;
+    font-size: 21px;
+}
+@media only screen and (min-width:100px) and (max-width: 377px){
+    form h1{
+        font-size: 1.1rem;
+    }
+    #form input{
+        width: 90%;
+    }
+    #form{
+        height: 562px;
+    }
+}

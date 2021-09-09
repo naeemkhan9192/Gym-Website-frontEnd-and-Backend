@@ -1,0 +1,25 @@
+extends layout.pug
+
+//- block scripts
+//-     script(src="../static/js/navbar.js")
+
+block style
+    style
+        include ../static/css/style.css
+        include ../static/css/navbar.css
+        include ../static/css/footer.css
+        include ../static/css/signin.css
+
+block content
+    form(action="/signin", method="post", id="form")
+        h1 Sign in with your account
+        img(src="../static/account/aicon.png", alt="acc icon")
+        //- label(for="email") Email
+        input(type="email", name="email", placeholder="Enter your Email" require)
+        //- label(for="password") Password
+        input(type="Password", name="password", placeholder="Enter your password" require)
+        button(type="submit" id="btn" ) Sign in
+        a(href="/signup") create your account
+        
+block scripts
+    script(src="../static/js/navbar.js")

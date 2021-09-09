@@ -1,0 +1,62 @@
+extends layout.pug
+
+//- block scripts
+//-     script(src="../statict/navbar.js")
+
+block style
+    style
+      include ../static/css/style.css
+      include ../static/css/navbar.css
+      include ../static/css/footer.css
+
+block content
+    section#HomeScreen
+      div.homecontainer
+        h1 Welcome to our Website
+        p Work hard and loose your weight
+
+    section#ourGoal-conatainer
+        div.header-container 
+          h2 Our #[span Goal]
+        div.our-goal
+          div.box
+            div.imag-container
+              img(src="./static/cards/card1.jpg", alt="fitness image")
+            div.box-info
+              h2 Title
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus   accusantium in sapiente rem maiores, asperiores eveniet optio error   magnam reprehenderit tempora omnis debitis!
+
+          div.box
+            div.imag-container
+              img(src="./static/cards/card7.jpg", alt="fitness image")
+            div.box-info
+              h2 Title
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus   accusantium in sapiente rem maiores, asperiores eveniet optio error   magnam reprehenderit tempora omnis debitis!
+
+          div.box
+            div.imag-container
+              img(src="./static/cards/card3.jpg", alt="fitness image")
+            div.box-info
+              h2 Title
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus   accusantium in sapiente rem maiores, asperiores eveniet optio error   magnam reprehenderit tempora omnis debitis!
+              
+          div.box
+            div.imag-container
+              img(src="./static/cards/card4.jpg", alt="fitness image")
+            div.box-info
+              h2 Title
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus   accusantium in sapiente rem maiores, asperiores eveniet optio error   magnam reprehenderit tempora omnis debitis!
+
+          div.box
+            div.imag-container
+              img(src="./static/cards/card5.jpg", alt="fitness image")
+            div.box-info
+              h2 Title
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus   accusantium in sapiente rem maiores, asperiores eveniet optio error   magnam reprehenderit tempora omnis debitis!
+
+          div.box
+            div.imag-container
+              img(src="./static/cards/card6.jpg", alt="fitness image")
+            div.box-info
+              h2 Title
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus   accusantium in sapiente rem maiores, asperiores eveniet optio error   magnam reprehenderit tempora omnis debitis!

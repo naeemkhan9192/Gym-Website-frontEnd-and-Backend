@@ -1,0 +1,81 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(0deg, rgb(7 36 255 / 51%), rgb(0 0 0 / 87%)), url(/static/background/bg3.jpg) no-repeat center center/cover;
+    color: white;
+}
+
+.form{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 50%;
+    margin: auto;
+    padding: 123px 0;
+}
+
+.form input{
+    padding: 3px 12px;
+    font-size: 1.2rem;
+    border-radius: 9px;
+    border: none;
+    outline: none;
+    height: 37px;
+}
+.h1-img-cont{
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+label{
+    font-size: 1.4rem;
+    margin: 5px;
+}
+.gender{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    width: 122px;
+}
+.gender input[type="radio"]{
+    width: 20px;
+}
+.btn-container{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+.btn{
+    border: none;
+    background-color: #408c40;
+    width: 107px;
+    height: 31px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    margin: 11px;
+    cursor: pointer;
+}
+
+@media only screen and (min-width:479px) and (max-width:728px){
+    .h1-img-cont h1{
+        font-size: 1.1rem;
+    }
+    .form{
+        width: 80%;
+    }
+}
+@media only screen and (min-width:100px) and (max-width:479px){
+    .h1-img-cont h1{
+        font-size: 1.1rem;
+    }
+    .form{
+        width: 80%;
+    }
+}
+
+

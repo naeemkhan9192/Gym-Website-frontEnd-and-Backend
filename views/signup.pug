@@ -1,0 +1,35 @@
+extends layout.pug
+
+block style
+    style
+        include ../static/css/navbar.css
+        include ../static/css/footer.css
+        include ../static/css/signup.css
+block content
+    form.form(action="/signup", method="post", id="form")
+        .h1-img-cont
+            h1 create your account
+            img(src="../static/account/aicon.png", alt="acc icon")
+        label(for="name") Firs Name
+        input(type="text", name="firstName", placeholder="Enter your first name", require)
+        label(for="name") Last Name
+        input(type="text", name="lastName", placeholder="Enter your last name", require)
+        label(for="date of birth") Date of birth
+        input(type="date" name="dateOfBirth", placeholder="Enter your date of birth") 
+        label(for="gender") Gender
+        .gender
+            input(type="radio" value="male" name="gender" )
+            label(for="gender") Male
+            input(type="radio" value="female" name="gender" )
+            label(for="gender") Female
+        label(for="email") Email
+        input(type="email", name="email", placeholder="Enter your Email" require)
+        label(for="number") Phone Number
+        input(type="numbers", name="phone", placeholder="Enter your Phone numbers" require)
+        label(for="password") Password
+        input(type="Password", name="password", placeholder="Enter your password" require)
+        label(for="password") Confirm Password
+        input(type="Password", name="Confirm_password", placeholder="Enter your password" require)
+        .btn-container
+            button(type="submit" id="btn" class="btn") Sign up
+            button.btn #[a(href="/signin")  Sign in] 

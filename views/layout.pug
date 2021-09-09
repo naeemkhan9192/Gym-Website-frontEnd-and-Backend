@@ -1,0 +1,52 @@
+//- layout.pug
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    //- title My Site - #{title}
+    title Welcome to our websites
+    block style
+
+  body
+    header#header
+      nav#navbar
+        #logo
+          a(href="/") #[img(src="./static/logo.png", alt="logo")]
+        .element-container
+          ul.nav-elment
+            li #[a(href="/") Home]
+            li #[a(href="/") About]
+            li #[a(href="/") Services]
+            li #[a(href="/contact") Contact]
+        .profile
+          if(token === undefine )
+            #login.side-elem
+              a(href="/signin")
+                span#signin Sign in
+          else
+            #profile-dashboard.side-elem
+              a(href="/dashboard")
+                p#dashboard Dashboard
+            #logout.side-elem
+              a(href="/signout")
+                p#signin Sign out
+        .amburger-container
+            span.amburger |||
+
+        
+    block content
+    
+    footer#footer
+      div.foocon
+        p All right reserverd &copy; #[span.date 2021-2022] 
+      div.foocon
+        p Follow us on 
+        div.imag
+          img(src="./static/footer/facebook.png", alt="facebook")
+          img(src="./static/footer/twitter.png", alt="twitter")
+          img(src="./static/footer/youtube.png", alt="youtube")
+
+  block scripts
+      script(src="./static/js/navbar.js") 
