@@ -7,38 +7,40 @@ block style
         include ../static/css/footer.css
 block content
     .userInfo
-        if(userInfo === null)
-            h1 error 404
-        else
-            h1 User Information
-            table
-                tr
-                    td 
-                        |First Name :
-                    td
-                        li=userInfo.firstName
-                tr 
-                    td 
-                        |Last Name :
-                    td
-                        li=userInfo.lastName
-                tr 
-                    td 
-                        |Email :
-                    td
-                        li=userInfo.email
-                tr        
-                    td 
-                        |Phone Number :
-                    td
-                        li=userInfo.phone
-                tr
-                    td
-                        |Gender :
-                    td 
-                        li=userInfo.gender
-                tr
-                    td
-                        |Date Of Birth :
-                    td 
-                        li=userInfo.dateOfBirth
+        div
+            if(userInfo === null)
+                h1 error 404
+            else
+                h1 User Information
+                img(src= `./static/upload/${userInfo.image}`  , alt="profile Image" class="userProfileImage")
+                table
+                    tr
+                        td 
+                            |First Name :
+                        td
+                            li=userInfo.firstName
+                    tr 
+                        td 
+                            |Last Name :
+                        td
+                            li=userInfo.lastName
+                    tr 
+                        td 
+                            |Email :
+                        td
+                            li=userInfo.email
+                    tr        
+                        td 
+                            |Phone Number :
+                        td
+                            li=userInfo.phone
+                    tr
+                        td
+                            |Gender :
+                        td 
+                            li=userInfo.gender
+                    tr
+                        td
+                            |Date Of Birth :
+                        td 
+                            li=userInfo.dateOfBirth

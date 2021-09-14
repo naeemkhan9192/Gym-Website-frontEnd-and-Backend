@@ -55,6 +55,11 @@ const signupSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    image:{
+        type: String,
+        require: true
+    }
+    ,
     date: { type: Date, default: Date.now },
     tokens:[{
         token:{
@@ -77,7 +82,7 @@ signupSchema.pre('save',async function(next){
 // generating tokens
 signupSchema.methods.generateAuthToken = async function (){
     try{
-        const token = jwt.sign({_id:this._id.toString()}, 'mynameisnaeemullahandiamawebdeveloperigrandsoon');
+        const token = jwt.sign({_id:this._id.toString()}, process.env.SECRET_KEY);
         this.tokens = this.tokens.concat({token:token});
         // consple
         await this.save();

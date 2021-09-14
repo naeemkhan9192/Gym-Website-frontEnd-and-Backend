@@ -6,10 +6,12 @@ block style
         include ../static/css/footer.css
         include ../static/css/signup.css
 block content
-    form.form(action="/signup", method="post", id="form")
+    form.form(action="/signup", method="post", id="form", enctype="multipart/form-data")
         .h1-img-cont
             h1 create your account
             img(src="../static/account/aicon.png", alt="acc icon")
+            span Upload your image
+            input(type="file", name="profileImage" id="profile_image")
         label(for="name") Firs Name
         input(type="text", name="firstName", placeholder="Enter your first name", require)
         label(for="name") Last Name

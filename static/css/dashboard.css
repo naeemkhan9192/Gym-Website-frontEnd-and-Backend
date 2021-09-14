@@ -2,11 +2,14 @@
     background: linear-gradient(0deg, rgb(7 36 255 / 51%), rgb(0 0 0 / 87%)), url(/static/background/bg3.jpg) no-repeat center center/cover;
     overflow: hidden;
     width: 100%;
-    height: 93.2vh;
+}
+.userInfo div{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin: 160px;
+
 }
 h1{
     color: white;
@@ -21,6 +24,16 @@ td{
     font-size: 1.5rem;
     font-weight: 500;
     padding: 23px;
+}
+
+.userProfileImage{
+    width: 149px;
+    border-radius: 29px;
+    margin: 14px;
+    width: 149px;
+    border-radius: 29px;
+    margin: 14px;
+    border: 14px solid rgb(10, 5, 5);
 }
 
 td li {
