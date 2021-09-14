@@ -12,11 +12,11 @@ const multer = require('multer')
 // __________________________________________________ //
 // multer for the images to file  from the client side to the server
 const storage = multer.diskStorage({
-    destination: function (req, file, cb)  {
+    destination: function (req, file, cb) {
         cb(null, './static/upload')
     },
-    
-    filename: function(req, file, cb){
+
+    filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
         cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname))
     }
@@ -54,7 +54,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.get('/', (req, res) => {
     try {
         const token = req.cookies.jwt;
-        res.status(200).render('Home', {token});
+        res.status(200).render('Home', { token });
     } catch (error) {
         res.status(200).render('Home');
     }
@@ -63,7 +63,7 @@ app.get('/', (req, res) => {
 // End point fot the contact request
 app.get('/contact', (req, res) => {
     const token = req.cookies.jwt;
-    res.status(200).render('contact', {token});
+    res.status(200).render('contact', { token });
 });
 
 // __________________________________________________ //
@@ -71,7 +71,7 @@ app.get('/contact', (req, res) => {
 // End point for the sign in request
 app.get('/signin', (req, res) => {
     token = req.cookies.jwt;
-    res.render('signin', {token});
+    res.render('signin', { token });
 });
 
 // __________________________________________________ //
@@ -87,15 +87,15 @@ app.get('/signup', (req, res) => {
 app.get('/dashboard', auth, async (req, res) => {
     userId = req.user._id
     token = req.cookies.jwt;
-    const userInfo = await signup.findOne( userId );
-    res.render('dashboard', {userInfo, token});
+    const userInfo = await signup.findOne(userId);
+    res.render('dashboard', { userInfo, token });
 });
 // __________________________________________________ //
 
 // End point for the signout request 
 app.get('/signout', auth, async (req, res) => {
     try {
-        req.user.tokens = req.user.tokens.filter((currtoken) => { 
+        req.user.tokens = req.user.tokens.filter((currtoken) => {
             return currtoken;
         });
 
@@ -111,7 +111,7 @@ app.get('/signout', auth, async (req, res) => {
 
 // post request to collect data from the client and saving data to data base
 app.post('/contact', async (req, res) => {
-    
+
     try {
         const myData = new contact(req.body);
         myData.save().then(() => {
@@ -123,51 +123,51 @@ app.post('/contact', async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-    
-    
+
+
 });
 // __________________________________________________ //
 
 // singup code for getting the user information and save it to the database
-app.post('/signup', upload.single("profileImage") ,async (req, res, next) => {
+app.post('/signup', upload.single("profileImage"), async (req, res, next) => {
 
     try {
         let f1 = req.file.filename
         console.log(f1)
-        
+
         const password = req.body.password;
         const cpassword = req.body.Confirm_password;
-        
+
         if (password === cpassword) {
             data = {
-                firstName: req.body.firstName ,
-                lastName: req.body.lastName ,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
                 dateOfBirth: req.body.dateOfBirth,
-                gender: req.body.gender ,
+                gender: req.body.gender,
                 phone: req.body.phone,
                 email: req.body.email,
                 password: req.body.password,
-                Confirm_password: req.body.Confirm_password ,
+                Confirm_password: req.body.Confirm_password,
                 image: req.file.filename
             }
-            
+
             const SignupData = new signup(data);
             const token = await SignupData.generateAuthToken();
-            
+
             res.cookie('jwt', token, {
                 expires: new Date(Date.now() + 3000 * 60),
                 httpOnly: true
                 // secure:true
             });
-            
+
             await SignupData.save();
-            
+
             res.status(200).render('signin');
         }
         else {
             res.send("Password is can't match");
         }
-        
+
     } catch (error) {
         console.log(error);
     }
@@ -181,19 +181,19 @@ app.post('/signin', async (req, res) => {
     try {
         const email = req.body.email;
         const password = req.body.password;
-        
+
         const userEmail = await signup.findOne({ email });
         const token = await userEmail.generateAuthToken();
-        
+
         res.cookie('jwt', token, {
             expires: new Date(Date.now() + 3000 * 3600),
             httpOnly: true,
             // secure:true
         });
-        const isMatch = await bcrypt.compare(password, userEmail.password); 
-        
+        const isMatch = await bcrypt.compare(password, userEmail.password);
+
         if (isMatch) {
-            res.status(201).render('Home', {token});
+            res.status(201).render('Home', { token });
         }
         else {
             res.send("Your account detail are incorrect");
@@ -207,4 +207,4 @@ app.listen(port, () => {
     console.log(`Server started at port ${port}`);
 });
 
-// __________________________________________________ //
+// __________________________________________________ // 
