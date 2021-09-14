@@ -18,7 +18,7 @@ mongoose.createConnection('mongodb://localhost/userRegistration', {
     console.log(`connet singup successfully`);
 }).catch((e) => {
     console.log(`no connection ${e}`);
-}) 
+})
 
 const signupSchema = new mongoose.Schema({
     firstName: {
@@ -33,8 +33,8 @@ const signupSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    gender:{
-        type:String,
+    gender: {
+        type: String,
         require: true
     },
     phone: {
@@ -55,40 +55,40 @@ const signupSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    image:{
+    image: {
         type: String,
         require: true
     }
     ,
     date: { type: Date, default: Date.now },
-    tokens:[{
-        token:{
-            type:String,
-            require:true
+    tokens: [{
+        token: {
+            type: String,
+            require: true
         }
     }]
 });
 
-signupSchema.pre('save',async function(next){
+signupSchema.pre('save', async function (next) {
 
-    if(this.isModified('password')){
+    if (this.isModified('password')) {
         this.password = await bcrypt.hash(this.password, 10);
         this.Confirm_password = await bcrypt.hash(this.Confirm_password, 10);
     }
     next();
-}); 
+});
 
 
 // generating tokens
-signupSchema.methods.generateAuthToken = async function (){
-    try{
-        const token = jwt.sign({_id:this._id.toString()}, process.env.SECRET_KEY);
-        this.tokens = this.tokens.concat({token:token});
+signupSchema.methods.generateAuthToken = async function () {
+    try {
+        const token = jwt.sign({ _id: this._id.toString() }, process.env.SECRET_KEY);
+        this.tokens = this.tokens.concat({ token: token });
         // consple
         await this.save();
         return token;
     }
-    catch(error){
+    catch (error) {
         console.log(`error occur in signup ${error}`);
     }
 }
