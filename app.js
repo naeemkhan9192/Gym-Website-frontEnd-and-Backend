@@ -132,8 +132,6 @@ app.post('/contact', async (req, res) => {
 app.post('/signup', upload.single("profileImage"), async (req, res, next) => {
 
     try {
-        let f1 = req.file.filename
-        console.log(f1)
 
         const password = req.body.password;
         const cpassword = req.body.Confirm_password;
@@ -183,6 +181,7 @@ app.post('/signin', async (req, res) => {
         const password = req.body.password;
 
         const userEmail = await signup.findOne({ email });
+        console.log(userEmail)
         const token = await userEmail.generateAuthToken();
 
         res.cookie('jwt', token, {
